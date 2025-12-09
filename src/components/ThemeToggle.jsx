@@ -1,22 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
-const ThemeToggle = () => {
-  const [theme, setTheme] = useState('dark');
+const ThemeToggle = ({ theme, toggleTheme }) => {
+  // Logic lifted to parent (Navbar)
 
-  useEffect(() => {
-    // Check system preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
+  // Just a button that calls the prop function
 
   return (
     <button

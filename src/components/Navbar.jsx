@@ -2,17 +2,33 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
+import logoWhite from '../assets/logo/white.png';
+import logoDark from '../assets/logo/dark.png';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
+    // Theme initialization
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   const navLinks = [
     { name: 'Inicio', href: '#home' },
@@ -26,8 +42,12 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-content">
-        <div className="logo">
-          <span>Constelaciones</span>
+        <div className="logo-container">
+          <img
+            src={theme === 'light' ? logoWhite : logoDark}
+            alt="Constelaciones Logo"
+            className="navbar-logo"
+          />
         </div>
 
         <div className="desktop-menu">
@@ -36,13 +56,13 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <ThemeToggle />
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>
 
         <div className="mobile-actions">
-          <ThemeToggle />
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           <div className="mobile-toggle" onClick={toggleMenu}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </div>
         </div>
 
@@ -91,10 +111,12 @@ const Navbar = () => {
           width: 100%; /* Ensure it takes full available width in the flex parent */
         }
 
-        .logo {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--text-main);
+        .navbar-logo {
+          height: 40px; /* Fits nicely in 64px navbar */
+          width: auto;
+          display: block;
+          transition: opacity 0.3s ease;
+          border-radius: 0; /* Override global img border-radius */
         }
 
         .desktop-menu {
@@ -137,7 +159,21 @@ const Navbar = () => {
 
         .mobile-toggle {
           cursor: pointer;
-          color: var(--text-main);
+          color: var(--primary);
+          background: transparent;
+          border: 1px solid var(--primary);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .mobile-toggle:hover {
+          background: var(--primary);
+          color: var(--text-on-primary);
         }
 
         .mobile-menu {
