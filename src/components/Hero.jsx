@@ -12,7 +12,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 7000); // Change every 6 seconds
+    }, 70000); // Change every 6 seconds
 
     return () => clearInterval(interval);
   }, [currentIndex, images.length]); // Reset timer on index change
