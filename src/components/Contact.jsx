@@ -1,143 +1,181 @@
-import { Instagram, Facebook, Phone, Mail } from 'lucide-react';
+import { MessageCircle, Instagram, Mail, MapPin, Globe } from 'lucide-react';
 
 const Contact = () => {
   return (
     <section id="contact" className="section contact">
       <div className="container contact-container">
-        <h2 className="section-title">Contáctame</h2>
-        <p className="contact-subtitle">
-          ¿Tienes dudas o quieres agendar una sesión? Escríbeme.
+        <h2 className="section-title">Contacto</h2>
+        <p className="contact-intro">
+          ¿Listo para iniciar tu proceso? Escríbeme directamente.
         </p>
 
-        <div className="contact-grid">
-          <div className="contact-info">
-            <div className="info-item">
-              <Phone className="icon" />
-              <span>+123 456 789</span>
+        <div className="contact-actions">
+          {/* WhatsApp - Primary Action */}
+          <a
+            href="https://wa.me/5492216492754"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-card whatsapp"
+          >
+            <MessageCircle size={32} />
+            <div className="card-text">
+              <h3>WhatsApp</h3>
+              <span>+54 9 221 649-2754</span>
             </div>
-            <div className="info-item">
-              <Mail className="icon" />
-              <span>contacto@biodeco.com</span>
-            </div>
+          </a>
 
-            <div className="social-links">
-              <a href="#" className="social-icon"><Instagram /></a>
-              <a href="#" className="social-icon"><Facebook /></a>
+          {/* Instagram - Primary Action */}
+          <a
+            href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-card instagram"
+          >
+            <Instagram size={32} />
+            <div className="card-text">
+              <h3>Instagram</h3>
+              <span>@activatupazinterior</span>
+            </div>
+          </a>
+        </div>
+
+        <div className="contact-info">
+          <div className="info-item">
+            <Mail className="info-icon" size={24} />
+            <div className="info-details">
+              <h4>Correo Electrónico</h4>
+              <a href="mailto:lorenacalcopietro@gmail.com">lorenacalcopietro@gmail.com</a>
             </div>
           </div>
 
-          <form className="contact-form">
-            <div className="form-group">
-              <input type="text" placeholder="Tu Nombre" required />
+          <div className="info-item">
+            <Globe className="info-icon" size={24} />
+            <div className="info-details">
+              <h4>Atención Virtual</h4>
+              <p>A todo el mundo hispanohablante</p>
             </div>
-            <div className="form-group">
-              <input type="email" placeholder="Tu Email" required />
+          </div>
+
+          <div className="info-item">
+            <MapPin className="info-icon" size={24} />
+            <div className="info-details">
+              <h4>Atención Presencial</h4>
+              <p>La Plata / City Bell, Buenos Aires</p>
             </div>
-            <div className="form-group">
-              <textarea placeholder="Tu Mensaje" rows="5" required></textarea>
-            </div>
-            <button type="submit" className="btn">Enviar Mensaje</button>
-          </form>
+          </div>
         </div>
       </div>
 
       <style jsx="true">{`
         .contact {
-          background: var(--bg-main);
-        }
-
-        .contact-subtitle {
-          text-align: center;
-          color: var(--text-main);
-          margin-bottom: 60px;
-          font-size: 1.1rem;
+          background-color: var(--bg-alt);
         }
 
         .contact-container {
-          max-width: 900px;
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
         }
 
-        .contact-grid {
+        .contact-intro {
+          font-size: 1.1rem;
+          margin-bottom: 40px;
+          color: var(--text-main);
+        }
+
+        .contact-actions {
           display: grid;
-          grid-template-columns: 1fr 1.5fr;
-          gap: 80px;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-bottom: 50px;
+        }
+
+        .contact-card {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          background-color: var(--bg-main);
+          padding: 25px;
+          border-radius: var(--radius-card);
+          box-shadow: var(--shadow-soft);
+          text-decoration: none;
+          color: var(--text-main);
+          border: 1px solid var(--border);
+          transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+          transform: translateY(-5px);
+          border-color: var(--primary);
+          box-shadow: 0 8px 25px rgba(var(--shadow-color), 0.2);
+        }
+
+        .contact-card h3 {
+          font-size: 1.2rem;
+          margin: 0;
+          color: var(--text-main);
+        }
+
+        .contact-card span {
+          display: block;
+          font-size: 0.9rem;
+          opacity: 0.8;
+          margin-top: 5px;
+        }
+
+        /* Specific brand colors on hover for fun */
+        .whatsapp:hover {
+          color: #25D366;
+        }
+        .instagram:hover {
+          color: #E1306C;
+        }
+
+        .contact-info {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+          background-color: var(--bg-main);
+          padding: 30px;
+          border-radius: var(--radius-card);
+          border: 1px solid var(--border);
         }
 
         .info-item {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 15px;
-          margin-bottom: 25px;
-          font-size: 1.1rem;
-          color: var(--text-main);
-          font-weight: 500;
+          text-align: left;
         }
 
-        .icon {
+        .info-icon {
           color: var(--primary);
-          width: 28px;
-          height: 28px;
+          flex-shrink: 0;
+          margin-top: 3px;
         }
 
-        .social-links {
-          display: flex;
-          gap: 20px;
-          margin-top: 40px;
-        }
-
-        .social-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: var(--bg-card);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--primary);
-          transition: all 0.3s ease;
-          border: 1px solid var(--border);
-        }
-
-        .social-icon:hover {
-          background: var(--primary);
-          color: var(--text-on-primary);
-          transform: translateY(-4px);
-          border-color: var(--primary);
-        }
-
-        .contact-form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          background: var(--bg-card);
-          padding: 40px;
-          border-radius: var(--radius-card);
-          box-shadow: 0 4px 30px rgba(var(--shadow-color),0.05);
-        }
-
-        .form-group input,
-        .form-group textarea {
-          width: 100%;
-          padding: 16px;
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          font-family: inherit;
+        .info-details h4 {
+          margin: 0 0 5px 0;
+          font-size: 1rem;
           color: var(--text-main);
-          background-color: var(--bg-input);
-          outline: none;
-          transition: all 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-          border-color: var(--primary);
-          background-color: var(--bg-main);
-          box-shadow: 0 0 0 4px rgba(var(--shadow-color), 0.1);
+        .info-details p, .info-details a {
+          margin: 0;
+          color: var(--text-secondary); /* A bit softer */
+          font-size: 0.95rem;
+          text-decoration: none;
+        }
+        
+        .info-details a:hover {
+          color: var(--primary);
+          text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-          .contact-grid {
-            grid-template-columns: 1fr;
+          .contact-actions {
+            grid-template-columns: 1fr; /* Stack buttons on mobile */
           }
         }
       `}</style>

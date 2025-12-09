@@ -1,25 +1,29 @@
 
+import meDesktop from '../assets/images/me2.jpeg';
+import meMobile from '../assets/images/me.jpeg';
+
 const About = () => {
   return (
     <section id="about" className="section about">
       <div className="container about-content">
         <div className="about-image">
-          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Terapeuta" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={meMobile} />
+            <img src={meDesktop} alt="Terapeuta" />
+          </picture>
         </div>
         <div className="about-text">
           <h2 className="section-title" style={{ textAlign: 'left' }}>Sobre Mí</h2>
           <p>
-            Hola, soy especialista en Biodecodificación Emocional y terapias holísticas.
-            Mi misión es acompañarte en tu proceso de autoconocimiento y sanación.
+            Soy María Lorena Calcopietro, Licenciada en Comunicación y fundadora de Activa tu Paz Interior, un espacio dedicado a la sanación emocional y el bienestar holístico.
+            Mi misión es acompañarte en un camino de autoconocimiento para que puedas identificar emociones, bloqueos y patrones que influyen en tu bienestar.
           </p>
           <p>
-            A través de diversas herramientas como los Registros Akáshicos y las Constelaciones
-            Familiares, buscamos juntos el origen emocional de tus conflictos para transformarlos
-            en aprendizaje y bienestar.
+            A través de herramientas holísticas como la biodescodificación emocional y los Registros Akáshicos, te invito a explorar tu mundo interior y abrir espacio a la transformación.
+            Creo en el poder de sanar cuando escuchamos nuestro cuerpo y nuestras emociones.
           </p>
           <p>
-            Creo firmemente que todos tenemos la capacidad de sanar cuando escuchamos el lenguaje
-            de nuestro cuerpo y nuestras emociones.
+            En Activa tu Paz Interior encontrarás un lugar seguro para reconectar con tu esencia y transformar tu historia desde la raíz.
           </p>
         </div>
       </div>

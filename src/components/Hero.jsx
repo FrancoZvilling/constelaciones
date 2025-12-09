@@ -1,11 +1,49 @@
+import { useState, useEffect } from 'react';
 import coverImage from '../assets/images/cover.jpg';
+import coverImage2 from '../assets/images/cover2.jpg';
+import coverImage3 from '../assets/images/cover3.jpg';
+import coverImage4 from '../assets/images/cover4.jpg';
 
 const Hero = () => {
+  const images = [coverImage, coverImage2, coverImage3, coverImage4];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 7000); // Change every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex, images.length]); // Reset timer on index change
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <section id="home" className="hero">
-      <img src={coverImage} alt="Cover" className="hero-image" />
+    <div id="home" className="hero">
+      {images.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt={`Slide ${index + 1}`}
+          className={`hero-image ${index === currentIndex ? 'active' : ''}`}
+        />
+      ))}
+
       <div className="hero-content">
-        <a href="#services" className="btn hero-btn">Ver Talleres</a>
+        <a href="#services" className="hero-btn">Ver Talleres</a>
+      </div>
+
+      <div className="carousel-dots">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`dot ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
 
       <style jsx="true">{`
@@ -22,39 +60,87 @@ const Hero = () => {
         }
         
         .hero-image {
+           position: absolute;
+           top: 0;
+           left: 0;
            width: 100%;
            height: 100%; /* Fill the fixed container */
            display: block;
-           object-fit: cover; /* Fill width AND height, cropping excess to prevent zoom/scroll issues */
-           border-radius: 0; 
+           object-fit: cover; /* Fill width AND height */
+           border-radius: 0;
+           opacity: 0;
+           transition: opacity 1.5s ease-in-out; /* Smooth crossfade */
+           z-index: 1;
+        }
+
+        .hero-image.active {
+          opacity: 1;
+          z-index: 2;
         }
 
         .hero-content {
           position: absolute;
-          bottom: 10%; /* Position at the bottom */
-          left: 60%;    /* Adjust this value to move right (e.g., 15%, 20%) */
-          transform: none; /* Remove centering transform */
-          z-index: 10;
-          text-align: left; /* Align text left */
-          width: auto; /* Allow it to shrink to fit content */
+          bottom: 10%; 
+          left: 60%;    
+          transform: none; 
+          z-index: 10; /* Ensure content is above images */
+          text-align: left; 
+          width: auto; 
         }
 
         .hero-btn {
-          font-size: 1.5rem;
           padding: 15px 40px;
-          border-radius: 50px;
-          box-shadow: 0 8px 32px rgba(var(--shadow-color), 0.4);
+          font-size: 1.5rem;
           background-color: var(--primary);
           color: var(--text-on-primary);
-          border: 2px solid rgba(255,255,255,0.2);
-          backdrop-filter: blur(4px);
+          border: none;
+          max-width: 300px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: inline-block;
+          font-family: 'Cinzel', serif;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .hero-btn:hover {
-          transform: scale(1.05); /* This is fine */
-          background-color: var(--bg-card);
-          color: var(--primary);
-          border-color: var(--primary);
+          background-color: var(--secondary);
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+
+        .carousel-dots {
+          position: absolute;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 15px;
+          z-index: 20;
+        }
+
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: rgba(0, 0, 0, 0.5); /* Darker for contrast on light images */
+          border: 2px solid rgba(255, 255, 255, 0.5); /* Light border for contrast on dark images */
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0;
+        }
+
+        .dot.active {
+          background-color: var(--primary);
+          transform: scale(1.2);
+          border-color: var(--bg-main);
+        }
+
+        .dot:hover {
+          background-color: rgba(255, 255, 255, 0.8);
         }
 
         @media (max-width: 768px) {
@@ -64,7 +150,7 @@ const Hero = () => {
 
           .hero-content {
             left: 50%;
-            bottom: 15%; /* Lift slightly higher on mobile */
+            bottom: 15%; /* Reverted to original position to avoid covering text */
             transform: translateX(-50%);
             text-align: center;
             width: 100%;
@@ -74,9 +160,13 @@ const Hero = () => {
              font-size: 1.2rem;
              padding: 12px 30px;
           }
+          
+          .carousel-dots {
+            bottom: 5%; /* Position dots lower to not interfere with button */
+          }
         }
       `}</style>
-    </section>
+    </div>
   );
 };
 
