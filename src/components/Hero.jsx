@@ -1,88 +1,83 @@
+import coverImage from '../assets/images/cover.jpg';
 
 const Hero = () => {
-    return (
-        <section id="home" className="hero">
-            <div className="container hero-content">
-                <div className="hero-text">
-                    <h1>Sanando el alma,<br />liberando emociones</h1>
-                    <p>
-                        Descubre el poder de la biodecodificación emocional y encuentra el equilibrio
-                        que tu vida necesita. Espacios de sanación a través de talleres y sesiones personalizadas.
-                    </p>
-                    <a href="#services" className="btn">Ver Talleres</a>
-                </div>
-                <div className="hero-image">
-                    {/* Placeholder for generated image */}
-                    <div className="image-placeholder">
-                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=2672&auto=format&fit=crop" alt="Meditación y paz" />
-                    </div>
-                </div>
-            </div>
+  return (
+    <section id="home" className="hero">
+      <img src={coverImage} alt="Cover" className="hero-image" />
+      <div className="hero-content">
+        <a href="#services" className="btn hero-btn">Ver Talleres</a>
+      </div>
 
-            <style jsx="true">{`
+      <style jsx="true">{`
         .hero {
-          padding-top: 120px;
-          padding-bottom: 80px;
-          background: linear-gradient(135deg, var(--color-bg) 0%, #ffecec 100%);
-          min-height: 90vh;
+          width: 100%;
+          height: 85vh; /* Fixed height to fit screen without scrolling */
+          position: relative;
           display: flex;
+          justify-content: center;
           align-items: center;
+          overflow: hidden;
+          margin-top: 0;
+          background-color: var(--bg-main);
+        }
+        
+        .hero-image {
+           width: 100%;
+           height: 100%; /* Fill the fixed container */
+           display: block;
+           object-fit: cover; /* Fill width AND height, cropping excess to prevent zoom/scroll issues */
+           border-radius: 0; 
         }
 
         .hero-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 50px;
-          align-items: center;
+          position: absolute;
+          bottom: 10%; /* Position at the bottom */
+          left: 60%;    /* Adjust this value to move right (e.g., 15%, 20%) */
+          transform: none; /* Remove centering transform */
+          z-index: 10;
+          text-align: left; /* Align text left */
+          width: auto; /* Allow it to shrink to fit content */
         }
 
-        .hero-text h1 {
-          font-size: 3.5rem;
-          line-height: 1.2;
-          margin-bottom: 20px;
-          color: var(--color-text);
+        .hero-btn {
+          font-size: 1.5rem;
+          padding: 15px 40px;
+          border-radius: 50px;
+          box-shadow: 0 8px 32px rgba(var(--shadow-color), 0.4);
+          background-color: var(--primary);
+          color: var(--text-on-primary);
+          border: 2px solid rgba(255,255,255,0.2);
+          backdrop-filter: blur(4px);
         }
 
-        .hero-text p {
-          font-size: 1.2rem;
-          color: var(--color-text-light);
-          margin-bottom: 30px;
-          max-width: 90%;
-        }
-
-        .hero-image img {
-          width: 100%;
-          height: auto;
-          box-shadow: var(--shadow-soft);
-          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-          transition: border-radius 0.5s ease;
-        }
-        
-        .hero-image:hover img {
-           border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        .hero-btn:hover {
+          transform: scale(1.05); /* This is fine */
+          background-color: var(--bg-card);
+          color: var(--primary);
+          border-color: var(--primary);
         }
 
         @media (max-width: 768px) {
-          .hero-content {
-            grid-template-columns: 1fr;
-            text-align: center;
-          }
-          
-          .hero-text h1 {
-            font-size: 2.5rem;
+          .hero {
+            height: 70vh; /* Slightly shorter on mobile to fit nicely */
           }
 
-          .hero-text p {
-            margin: 0 auto 30px;
+          .hero-content {
+            left: 50%;
+            bottom: 15%; /* Lift slightly higher on mobile */
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
           }
-          
-          .hero-image {
-             margin-top: 40px;
+
+          .hero-btn {
+             font-size: 1.2rem;
+             padding: 12px 30px;
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Hero;

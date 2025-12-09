@@ -26,7 +26,8 @@ const About = () => {
 
       <style jsx="true">{`
         .about {
-          background-color: white;
+          background-color: var(--bg-main);
+          position: relative;
         }
 
         .about-content {
@@ -46,7 +47,7 @@ const About = () => {
 
         .about-text p {
           margin-bottom: 20px;
-          color: var(--color-text-light);
+          color: var(--text-main);
           font-size: 1.1rem;
         }
 

@@ -1,19 +1,19 @@
 
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="container footer-content">
-                <p>&copy; {new Date().getFullYear()} Biodecodificación. Todos los derechos reservados.</p>
-                <div className="footer-links">
-                    <a href="#home">Inicio</a>
-                    <a href="#privacy">Política de Privacidad</a>
-                </div>
-            </div>
-            <style jsx="true">{`
+  return (
+    <footer className="footer">
+      <div className="container footer-content">
+        <p>&copy; {new Date().getFullYear()} Biodecodificación. Todos los derechos reservados.</p>
+        <div className="footer-links">
+          <a href="#home">Inicio</a>
+          <a href="#privacy">Política de Privacidad</a>
+        </div>
+      </div>
+      <style jsx="true">{`
         .footer {
-          background-color: var(--color-primary-light);
-          padding: 30px 0;
-          color: #fff;
+          background-color: var(--primary);
+          padding: 40px 0;
+          color: var(--text-on-primary);
         }
 
         .footer-content {
@@ -46,8 +46,8 @@ const Footer = () => {
           }
         }
       `}</style>
-        </footer>
-    );
+    </footer>
+  );
 };
 
 export default Footer;

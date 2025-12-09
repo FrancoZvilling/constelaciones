@@ -1,105 +1,117 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const navLinks = [
-        { name: 'Inicio', href: '#home' },
-        { name: 'Sobre mí', href: '#about' },
-        { name: 'Talleres', href: '#services' },
-        { name: 'Contacto', href: '#contact' },
-    ];
+  const navLinks = [
+    { name: 'Inicio', href: '#home' },
+    { name: 'Sobre mí', href: '#about' },
+    { name: 'Talleres', href: '#services' },
+    { name: 'Contacto', href: '#contact' },
+  ];
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-    return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="container nav-content">
-                <div className="logo">
-                    <span>Constelaciones</span><span className="dot">.</span>
-                </div>
+  return (
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container nav-content">
+        <div className="logo">
+          <span>Constelaciones</span>
+        </div>
 
-                <div className="desktop-menu">
-                    {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="nav-link">
-                            {link.name}
-                        </a>
-                    ))}
-                </div>
+        <div className="desktop-menu">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="nav-link">
+              {link.name}
+            </a>
+          ))}
+          <ThemeToggle />
+        </div>
 
-                <div className="mobile-toggle" onClick={toggleMenu}>
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </div>
+        <div className="mobile-actions">
+          <ThemeToggle />
+          <div className="mobile-toggle" onClick={toggleMenu}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </div>
+        </div>
 
-                {isOpen && (
-                    <div className="mobile-menu">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="mobile-link"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                    </div>
-                )}
-            </div>
+        {isOpen && (
+          <div className="mobile-menu">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="mobile-link"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
 
-            <style jsx="true">{`
+      <style jsx="true">{`
         .navbar {
-          position: fixed;
+          position: sticky;
           top: 0;
           left: 0;
           width: 100%;
+          height: 64px; /* Explicit height to match body padding */
           z-index: 1000;
-          padding: 20px 0;
+          padding: 0; /* Use flex align instead of padding */
           transition: all 0.3s ease;
-          background-color: transparent;
+          background-color: var(--bg-main);
+          box-shadow: 0 2px 10px rgba(var(--shadow-color), 0.1);
+          border-bottom: 1px solid var(--border);
+          display: flex;
+          align-items: center;
         }
 
         .navbar.scrolled {
-          background-color: rgba(255, 255, 255, 0.95);
-          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-          padding: 15px 0;
-          backdrop-filter: blur(5px);
+          /* Scrolled state can just reinforce shadow if needed, or arguably be same */
+          box-shadow: 0 4px 15px rgba(var(--shadow-color), 0.15);
         }
 
         .nav-content {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          width: 100%; /* Ensure it takes full available width in the flex parent */
         }
 
         .logo {
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--color-text);
-        }
-
-        .logo .dot {
-          color: var(--color-primary);
+          color: var(--text-main);
         }
 
         .desktop-menu {
           display: flex;
           gap: 30px;
+          align-items: center;
         }
 
         .nav-link {
           font-weight: 500;
+          color: var(--text-main);
           position: relative;
+          transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+          color: var(--primary);
         }
 
         .nav-link::after {
@@ -109,18 +121,23 @@ const Navbar = () => {
           left: 0;
           width: 0;
           height: 2px;
-          background-color: var(--color-primary);
+          background-color: var(--primary);
           transition: width 0.3s ease;
         }
 
         .nav-link:hover::after {
           width: 100%;
         }
+        
+        .mobile-actions {
+          display: none;
+          gap: 15px;
+          align-items: center;
+        }
 
         .mobile-toggle {
-          display: none;
           cursor: pointer;
-          color: var(--color-text);
+          color: var(--text-main);
         }
 
         .mobile-menu {
@@ -128,32 +145,34 @@ const Navbar = () => {
           top: 100%;
           left: 0;
           width: 100%;
-          background-color: white;
+          background-color: var(--bg-main);
           padding: 20px;
           display: flex;
           flex-direction: column;
           gap: 15px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 20px rgba(var(--shadow-color),0.1);
+          border-bottom: 1px solid var(--border);
         }
 
         .mobile-link {
           font-size: 1.1rem;
           font-weight: 500;
-          padding: 10px;
-          border-bottom: 1px solid #eee;
+          padding: 15px;
+          color: var(--text-main);
+          border-bottom: 1px solid var(--border);
         }
 
         @media (max-width: 768px) {
           .desktop-menu {
             display: none;
           }
-          .mobile-toggle {
-            display: block;
+          .mobile-actions {
+            display: flex;
           }
         }
       `}</style>
-        </nav>
-    );
+    </nav>
+  );
 };
 
 export default Navbar;

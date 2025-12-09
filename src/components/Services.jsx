@@ -40,66 +40,70 @@ const Services = () => {
 
       <style jsx="true">{`
         .services {
-          background-color: var(--color-bg);
+          background-color: var(--bg-card);
+          position: relative;
         }
 
         .services-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 30px;
-          margin-top: 40px;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 40px;
+          margin-top: 60px;
         }
 
         .service-card {
-          background: white;
+          background: var(--bg-main);
           border-radius: var(--radius-card);
           overflow: hidden;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 20px rgba(var(--shadow-color),0.05);
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+          border: 1px solid var(--border);
         }
 
         .service-card:hover {
-          transform: translateY(-5px);
+          transform: translateY(-8px);
           box-shadow: var(--shadow-soft);
+          border-color: var(--primary);
         }
 
         .card-image img {
           width: 100%;
-          height: 200px;
+          height: 240px;
           object-fit: cover;
-          border-radius: 0;
         }
 
         .card-content {
-          padding: 25px;
-          text-align: center;
+          padding: 30px;
+          text-align: left;
         }
 
         .card-content h3 {
-          color: var(--color-primary);
+          color: var(--primary);
           margin-bottom: 15px;
-          font-size: 1.5rem;
+          font-size: 1.6rem;
         }
 
         .card-content p {
-          color: var(--color-text-light);
-          margin-bottom: 20px;
-          font-size: 0.95rem;
+          color: var(--text-main);
+          margin-bottom: 25px;
+          font-size: 1rem;
+          line-height: 1.7;
         }
 
         .card-btn {
           background: transparent;
-          border: 1px solid var(--color-primary);
-          color: var(--color-primary);
-          padding: 8px 20px;
+          border: 1px solid var(--primary);
+          color: var(--primary);
+          padding: 10px 24px;
           border-radius: 50px;
           cursor: pointer;
           transition: all 0.3s ease;
+          font-weight: 500;
         }
 
         .card-btn:hover {
-          background: var(--color-primary);
-          color: white;
+          background: var(--primary);
+          color: var(--text-on-primary);
         }
       `}</style>
     </section>
