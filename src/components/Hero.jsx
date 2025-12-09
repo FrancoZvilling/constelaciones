@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import cover0 from '../assets/images/cover0.jpg';
 import coverImage from '../assets/images/cover.jpg';
 import coverImage2 from '../assets/images/cover2.jpg';
 import coverImage3 from '../assets/images/cover3.jpg';
 import coverImage4 from '../assets/images/cover4.jpg';
 
 const Hero = () => {
-  const images = [coverImage, coverImage2, coverImage3, coverImage4];
+  const images = [cover0, coverImage, coverImage2, coverImage3, coverImage4];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

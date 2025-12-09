@@ -15,7 +15,7 @@ const About = () => {
         <div className="about-text">
           <h2 className="section-title" style={{ textAlign: 'left' }}>Sobre Mí</h2>
           <p>
-            Soy María Lorena Calcopietro, Licenciada en Comunicación y fundadora de Activa tu Paz Interior, un espacio dedicado a la sanación emocional y el bienestar holístico.
+            Soy María Lorena Calcopietro, Licenciada en Comunicación y fundadora de <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a>, un espacio dedicado a la sanación emocional y el bienestar holístico.
             Mi misión es acompañarte en un camino de autoconocimiento para que puedas identificar emociones, bloqueos y patrones que influyen en tu bienestar.
           </p>
           <p>
@@ -23,7 +23,7 @@ const About = () => {
             Creo en el poder de sanar cuando escuchamos nuestro cuerpo y nuestras emociones.
           </p>
           <p>
-            En Activa tu Paz Interior encontrarás un lugar seguro para reconectar con tu esencia y transformar tu historia desde la raíz.
+            En <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a> encontrarás un lugar seguro para reconectar con tu esencia y transformar tu historia desde la raíz.
           </p>
         </div>
       </div>
@@ -53,6 +53,18 @@ const About = () => {
           margin-bottom: 20px;
           color: var(--text-main);
           font-size: 1.1rem;
+        }
+
+        .brand-link {
+          font-weight: bold;
+          color: var(--primary);
+          text-decoration: none;
+          transition: opacity 0.3s;
+        }
+        
+        .brand-link:hover {
+          text-decoration: underline;
+          opacity: 0.8;
         }
 
         @media (max-width: 768px) {

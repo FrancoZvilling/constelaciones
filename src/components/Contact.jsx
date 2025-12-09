@@ -17,7 +17,7 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="contact-card whatsapp"
           >
-            <MessageCircle size={32} />
+            <MessageCircle size={32} className="icon-color" />
             <div className="card-text">
               <h3>WhatsApp</h3>
               <span>+54 9 221 649-2754</span>
@@ -31,7 +31,7 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="contact-card instagram"
           >
-            <Instagram size={32} />
+            <Instagram size={32} className="icon-color" />
             <div className="card-text">
               <h3>Instagram</h3>
               <span>@activatupazinterior</span>
@@ -124,12 +124,20 @@ const Contact = () => {
           margin-top: 5px;
         }
 
-        /* Specific brand colors on hover for fun */
-        .whatsapp:hover {
+        /* Icon colors */
+        .whatsapp .icon-color {
           color: #25D366;
         }
-        .instagram:hover {
+        .instagram .icon-color {
           color: #E1306C;
+        }
+        
+        .whatsapp:hover {
+          border-color: #25D366;
+        }
+        
+        .instagram:hover {
+           border-color: #E1306C;
         }
 
         .contact-info {

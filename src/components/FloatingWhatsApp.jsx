@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 const FloatingWhatsApp = () => {
   return (
     <a
-      href="https://wa.me/123456789"
+      href="https://wa.me/5492216492754"
       className="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"
@@ -15,8 +15,8 @@ const FloatingWhatsApp = () => {
           position: fixed;
           bottom: 30px;
           right: 30px;
-          background-color: var(--primary);
-          color: var(--text-on-primary);
+          background-color: #25D366;
+          color: white;
           width: 60px;
           height: 60px;
           border-radius: 50%;
