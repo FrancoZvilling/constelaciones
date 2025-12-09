@@ -1,29 +1,30 @@
 
-import meDesktop from '../assets/images/me2.jpeg';
-import meMobile from '../assets/images/me.jpeg';
+import meDark from '../assets/images/me-dark.jpeg';
+import meWhite from '../assets/images/me-white.jpeg';
 
-const About = () => {
+const About = ({ theme }) => {
   return (
     <section id="about" className="section about">
       <div className="container about-content">
         <div className="about-image">
-          <picture>
-            <source media="(max-width: 768px)" srcSet={meMobile} />
-            <img src={meDesktop} alt="Terapeuta" />
-          </picture>
+          <img
+            src={theme === 'light' ? meWhite : meDark}
+            alt="Terapeuta"
+            style={{ transition: 'opacity 0.3s ease' }}
+          />
         </div>
         <div className="about-text">
           <h2 className="section-title" style={{ textAlign: 'left' }}>Sobre Mí</h2>
           <p>
-            Soy María Lorena Calcopietro, Licenciada en Comunicación y fundadora de <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a>, un espacio dedicado a la sanación emocional y el bienestar holístico.
-            Mi misión es acompañarte en un camino de autoconocimiento para que puedas identificar emociones, bloqueos y patrones que influyen en tu bienestar.
+            Soy María Lorena Calcopietro, Licenciada en Comunicación y fundadora de <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a>, un espacio dedicado a la sanación emocional para lograr el bienestar.
+            Mi misión es acompañarte en un camino de autoconocimiento para que puedas identificar emociones, bloqueos y patrones que influyen en tu armonía.
           </p>
           <p>
-            A través de herramientas holísticas como la biodescodificación emocional y los Registros Akáshicos, te invito a explorar tu mundo interior y abrir espacio a la transformación.
+            A través de métodos como la biodescodificación emocional, constelaciones familiares y los Registros Akáshicos, te invito a explorar tu mundo interior y abrir espacio a la transformación.
             Creo en el poder de sanar cuando escuchamos nuestro cuerpo y nuestras emociones.
           </p>
           <p>
-            En <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a> encontrarás un lugar seguro para reconectar con tu esencia y transformar tu historia desde la raíz.
+            En <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" className="brand-link">Activa tu Paz Interior</a> encontrarás un sitio seguro para reconectar con tu esencia y transformar tu historia desde la raíz.
           </p>
         </div>
       </div>
