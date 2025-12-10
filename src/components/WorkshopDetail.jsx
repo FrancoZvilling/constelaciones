@@ -93,7 +93,7 @@ const WorkshopDetail = () => {
 
             <div className="action-area">
               <motion.a
-                href="https://wa.me/5492216492754?text=Hola,%20quisiera%20reservar%20mi%20lugar%20para%20el%20taller:%20"
+                href={`https://wa.me/5492216492754?text=${encodeURIComponent(`Hola, quisiera reservar mi lugar para el taller: ${workshop.title}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cta-button"
@@ -185,7 +185,6 @@ const WorkshopDetail = () => {
         .detail-image-container {
           margin: 30px auto;
           width: 100%;
-          max-width: 600px; /* Tamaño máximo manual */
           border-radius: 20px;
           overflow: hidden;
           box-shadow: var(--shadow-soft);
@@ -193,7 +192,9 @@ const WorkshopDetail = () => {
 
         .detail-image {
           width: 100%;
-          height: auto;
+          height: 350px; /* Fixed height for crop effect */
+          object-fit: cover; /* Crop to fit */
+          object-position: center;
           display: block;
         }
 

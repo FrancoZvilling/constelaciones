@@ -48,5 +48,50 @@ export const workshops = [
         ],
         idealFor: "Si buscas comprenderte mejor, darle sentido a lo que sentís y abrirte a nuevas formas de sanación.",
         image: emocionesImage
+    },
+    {
+        id: "constelaciones-familiares",
+        title: "Constelá tu problema",
+        shortDescription: "Exterioriza la imagen interna de tu conflicto para ver su dinámica oculta. Una oportunidad para ordenar lo desordenado y encontrar nuevas soluciones vitales.",
+        fullDescription: [
+            "Constelar es una herramienta poderosa que nos permite ver, a través de una representación espacial, la dinámica oculta de un conflicto. Al exteriorizar la imagen interna que tenemos del problema, podemos encontrar nuevas soluciones y ordenar lo que estaba desordenado.",
+            "No solo trabajamos cuestiones familiares. Podés constelar: Decisiones difíciles, Bloqueos económicos o laborales, Síntomas físicos, Problemas de pareja o Situaciones repetitivas.",
+            "Tipos de Constelaciones:",
+            "✨ Individuales: Trabajamos mano a mano, utilizando vincores, muñecos o anclajes espaciales para representar las partes del conflicto. Es ideal si preferís un entorno más íntimo y focalizado.",
+            "✨Grupales: Se realizan en talleres donde otras personas participan como representantes. La fuerza del grupo amplifica la percepción y el movimiento sanador, permitiendo ver el sistema completo.",
+            "Talleres grupales e individuales disponibles."
+        ],
+        idealFor: "Para quienes buscan claridad y solución ante un bloqueo específico, ya sea personal, vincular o laboral.",
+        image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2664&auto=format&fit=crop"
+    },
+    {
+        id: "biodecodificacion-sistemica",
+        title: "Biodecodificación Emocional Sistémica",
+        shortDescription: "Comprende el origen emocional de tus síntomas y libera los conflictos biológicos que te impiden avanzar.",
+        fullDescription: [
+            "La Biodecodificación es un camino para comprender que la enfermedad o el síntoma no es un error, sino una solución biológica de supervivencia frente a un conflicto emocional no resuelto.",
+            "En sesiones individuales, te acompaño a descubrir el código biológico de tus dolencias y a reescribir tu historia hacia la salud y el bienestar integral.",
+            "Programa de Acompañamiento – 3 Sesiones:",
+            "Trabajamos en un ciclo de 3 encuentros, con un lapso de 30 días entre cada sesión. Este ritmo permite que el cuerpo, la emoción y la historia familiar se integren y muestren cambios reales y sostenidos.",
+            "En cada sesión: Exploramos el síntoma o la situación actual, trabajamos el origen emocional y transgeneracional, realizamos ejercicios simbólicos y de constelación, y te dejo herramientas prácticas para aplicar en tu día a día.",
+            "Consultar valor por sesión o ciclo completo."
+        ],
+        idealFor: "Si estás atravesando un síntoma físico, una enfermedad o un patrón repetitivo y buscas su raíz emocional.",
+        image: "https://extension.unicen.edu.ar/wp-content/uploads/2016/03/BIODECODIFICACION2016-imagne-1.jpg"
+    },
+    {
+        id: "registros-akashicos",
+        title: "Registros Akáshicos",
+        shortDescription: "Accede a la sabiduría de tu alma. Lecturas para obtener guía, claridad y comprensión sobre tu camino evolutivo.",
+        fullDescription: [
+            "En la apertura de los Registros Akáshicos accedemos a nuestra energía más elevada de conciencia, a nuestro Yo superior, guías, maestros y seres de Luz.",
+            "Abrimos nuestro campo de luz al aprendizaje, sanación y transformación.",
+            "A través de preguntas tenemos la oportunidad de traer mayor entendimiento a la situación que estamos atravesando. También podemos entregarnos al mensaje que tienen los guías para darnos!",
+            "Te aseguro que se siente un estado de Paz que ayuda a conectarse con uno mismo desde un lugar diferente.",
+            "Los Registros Akáshicos son la memoria universal de la existencia, un espacio vibracional donde se guarda la información de cada alma. Acceder a ellos nos permite recibir información amorosa y compasiva para nuestro momento presente.",
+            "A través de una lectura, podemos comprender el 'para qué' de nuestras experiencias, sanar vínculos y recordar nuestro propósito."
+        ],
+        idealFor: "Si buscas claridad, guía espiritual o comprender el sentido profundo de situaciones que estás atravesando.",
+        image: "https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?q=80&w=2699&auto=format&fit=crop"
     }
 ];

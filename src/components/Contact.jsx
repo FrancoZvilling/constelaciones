@@ -12,7 +12,7 @@ const Contact = () => {
         <div className="contact-actions">
           {/* WhatsApp - Primary Action */}
           <a
-            href="https://wa.me/5492216492754"
+            href={`https://wa.me/5492216492754?text=${encodeURIComponent("Hola, vengo de tu página web y queria consultarte algo")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="contact-card whatsapp"

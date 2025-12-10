@@ -1,6 +1,6 @@
 
-import meDark from '../assets/images/me-dark.jpeg';
-import meWhite from '../assets/images/me-white.jpeg';
+import meDark from '../assets/images/me-dark.webp';
+import meWhite from '../assets/images/me-white.webp';
 
 const About = ({ theme }) => {
   return (

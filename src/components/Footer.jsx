@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Conectemos</h3>
           <div className="social-icons">
-            <a href="https://wa.me/5492216492754" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <a href={`https://wa.me/5492216492754?text=${encodeURIComponent("Hola, vengo de tu página web y queria consultarte algo")}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <MessageCircle size={24} />
             </a>
             <a href="https://www.instagram.com/activatupazinterior?igsh=dzJhd3l1YnR4czJv&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

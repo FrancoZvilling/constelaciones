@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import cover0 from '../assets/images/cover0.jpg';
-import coverImage from '../assets/images/cover.jpg';
-import coverImage2 from '../assets/images/cover2.jpg';
-import coverImage3 from '../assets/images/cover3.jpg';
-import coverImage4 from '../assets/images/cover4.jpg';
+import cover0 from '../assets/images/cover0.webp';
+import coverImage from '../assets/images/cover.webp';
+import coverImage2 from '../assets/images/cover2.webp';
+import coverImage3 from '../assets/images/cover3.webp';
+import coverImage4 from '../assets/images/cover4.webp';
 
 const Hero = () => {
   const images = [cover0, coverImage, coverImage2, coverImage3, coverImage4];
@@ -12,7 +12,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000); // Change every 6 seconds
+    }, 10000); // Change every 10 seconds
 
     return () => clearInterval(interval);
   }, [currentIndex, images.length]); // Reset timer on index change
