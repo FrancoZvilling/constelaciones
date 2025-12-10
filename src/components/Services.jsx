@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -33,7 +33,7 @@ const CarouselSection = ({ items }) => {
         </button>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Navigation, Pagination]}
           spaceBetween={30}
           slidesPerView={1}
           loop={false}
@@ -45,11 +45,6 @@ const CarouselSection = ({ items }) => {
           navigation={{
             prevEl: `.prev-${carouselId}`,
             nextEl: `.next-${carouselId}`,
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
           }}
           pagination={{ clickable: true }}
           breakpoints={{
