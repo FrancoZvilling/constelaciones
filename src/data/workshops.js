@@ -1,6 +1,6 @@
-import vozImage from '../assets/images/voz.png';
-import familiaImage from '../assets/images/familia.png';
-import emocionesImage from '../assets/images/emociones.png';
+import vozImage from '../assets/images/voz.webp';
+import familiaImage from '../assets/images/familia.webp';
+import emocionesImage from '../assets/images/emociones.webp';
 
 export const workshops = [
     {
