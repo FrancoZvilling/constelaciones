@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,6 +7,7 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import WorkshopDetail from './components/WorkshopDetail';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -27,10 +29,19 @@ function App() {
   return (
     <>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <Hero />
-      <About theme={theme} />
-      <Services />
-      <Contact />
+
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <About theme={theme} />
+            <Services />
+            <Contact />
+          </>
+        } />
+        <Route path="/taller/:id" element={<WorkshopDetail />} />
+      </Routes>
+
       <Footer />
       <FloatingWhatsApp />
     </>
