@@ -33,6 +33,7 @@ const About = ({ theme }) => {
         .about {
           background-color: var(--bg-main);
           position: relative;
+          margin-top: -90px;
         }
 
         .about-content {
