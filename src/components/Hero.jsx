@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import cover0 from '../assets/images/cover0.webp';
+import cover0 from '../assets/images/cover0.png';
 import coverImage from '../assets/images/cover.webp';
 import coverImage2 from '../assets/images/cover2.webp';
 import coverImage3 from '../assets/images/cover3.webp';
