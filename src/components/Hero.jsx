@@ -58,6 +58,20 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Decorative Separator */}
+      <div className="hero-separator">
+        <svg width="100%" height="100%" viewBox="0 0 120 20" preserveAspectRatio="none" className="flourish-svg">
+          <path
+            d="M0,10 C30,10 30,5 60,5 C90,5 90,10 120,10"
+            fill="none"
+            stroke="var(--primary)"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+          <circle cx="60" cy="5" r="2" fill="var(--primary)" />
+        </svg>
+      </div>
+
       <style jsx="true">{`
         .hero-container {
           width: 100%;
@@ -66,6 +80,7 @@ const Hero = () => {
           flex-direction: column;
           background-color: var(--bg-main);
           margin-top: 0;
+          padding-bottom: 60px; /* Increased visual space below */
         }
 
         /* Top Static Section */
@@ -175,6 +190,21 @@ const Hero = () => {
           border-color: var(--bg-main);
         }
 
+        .hero-separator {
+          width: 100%;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: -30px; 
+          opacity: 0.8;
+          max-width: 300px;
+          margin-left: auto;
+          margin-right: auto;
+          z-index: 5;
+          position: relative;
+        }
+
         @media (max-width: 768px) {
           .hero-static {
             height: 60vh;
@@ -194,6 +224,10 @@ const Hero = () => {
           
           .carousel-bg {
             transform: scale(1.6); /* Zoom center to make text legible */
+          }
+
+          .hero-separator {
+            margin-top: -10px; /* Reverted for mobile */
           }
         }
       `}</style>
