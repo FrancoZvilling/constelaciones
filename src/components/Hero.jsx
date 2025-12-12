@@ -191,6 +191,10 @@ const Hero = () => {
             height: 250px;
             transform: translateY(-15%); /* Subtle overlap on mobile */
           }
+          
+          .carousel-bg {
+            transform: scale(1.6); /* Zoom center to make text legible */
+          }
         }
       `}</style>
     </div>
