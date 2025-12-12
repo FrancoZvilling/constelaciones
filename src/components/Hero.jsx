@@ -10,7 +10,8 @@ const Hero = () => {
   const staticImage = cover0;
 
   // Carousel images (Bottom)
-  const carouselImages = [coverImage4, coverImage2, coverImage3, coverImage];
+  // Carousel images (Bottom)
+  const carouselImages = [coverImage, coverImage4, coverImage2, coverImage3];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Hero = () => {
       {/* Top Section: Static Image */}
       <div className="hero-static" style={{ backgroundImage: `url(${staticImage})` }}>
         <div className="hero-content">
-          <a href="#services" className="hero-btn">Ver Talleres</a>
+          <a href="#services" className="hero-btn">Ver servicios</a>
         </div>
       </div>
 

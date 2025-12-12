@@ -1,18 +1,51 @@
 
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import meDark from '../assets/images/me-dark.webp';
 import meWhite from '../assets/images/me-white.webp';
 
 const About = ({ theme }) => {
+  const [showVideo, setShowVideo] = useState(false);
+
+  const toggleMedia = () => {
+    setShowVideo(!showVideo);
+  };
+
   return (
     <section id="about" className="section about">
       <div className="container about-content">
-        <div className="about-image">
-          <img
-            src={theme === 'light' ? meWhite : meDark}
-            alt="Terapeuta"
-            style={{ transition: 'opacity 0.3s ease' }}
-          />
+        <div className="about-media-container">
+          <div className="media-wrapper">
+            {!showVideo ? (
+              <img
+                src={theme === 'light' ? meWhite : meDark}
+                alt="Terapeuta"
+                className="about-image"
+                style={{ transition: 'opacity 0.3s ease' }}
+              />
+            ) : (
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/ttWUi56Duog?si=4jVX6tU6GnYpyZN3"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="about-video"
+              ></iframe>
+            )}
+          </div>
+
+          <button className="nav-btn prev-btn" onClick={toggleMedia} aria-label="Previous slide">
+            <ChevronLeft size={24} color="#fff" />
+          </button>
+          <button className="nav-btn next-btn" onClick={toggleMedia} aria-label="Next slide">
+            <ChevronRight size={24} color="#fff" />
+          </button>
         </div>
+
         <div className="about-text">
           <h2 className="section-title" style={{ textAlign: 'left' }}>Sobre Mí</h2>
           <p>
@@ -43,12 +76,60 @@ const About = ({ theme }) => {
           align-items: center;
         }
 
-        .about-image img {
+        .about-media-container {
+          position: relative;
           width: 100%;
-          height: 400px;
-          object-fit: cover;
+          height: 400px; /* Fixed height matching previous image */
           border-radius: var(--radius-card);
           box-shadow: var(--shadow-soft);
+          overflow: hidden;
+        }
+
+        .media-wrapper {
+          width: 100%;
+          height: 100%;
+        }
+
+        .about-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        
+        .about-video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .nav-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(0,0,0,0.5);
+          border: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          z-index: 10;
+        }
+        
+        .nav-btn:hover {
+          background-color: var(--primary);
+        }
+
+        .prev-btn {
+          left: 10px;
+        }
+
+        .next-btn {
+          right: 10px;
         }
 
         .about-text p {
@@ -74,13 +155,24 @@ const About = ({ theme }) => {
             grid-template-columns: 1fr;
           }
           
-          .about-image {
+          .about-media-container {
             order: -1;
             margin-bottom: 20px;
+            height: 300px; /* Smaller height on mobile if needed, or keep 400 */
           }
           
           .about-text h2 {
             text-align: center !important;
+          }
+
+          .nav-btn {
+            opacity: 1 !important; /* Force visibility */
+            visibility: visible !important;
+            display: flex !important;
+            z-index: 20 !important;
+            background-color: rgba(0,0,0,0.6); /* Slightly darker for better contrast */
+            width: 45px; /* Slightly larger targets */
+            height: 45px;
           }
         }
       `}</style>
